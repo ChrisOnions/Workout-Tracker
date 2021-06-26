@@ -8,7 +8,7 @@ const Transaction = require("../models/transaction.js");
 // exercise? 
 router.get("/api/", (req, res) => {
 
-  // res.json(dbTransaction);
+  res.json(Transaction);
 });
 // 
 // 
