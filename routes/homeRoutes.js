@@ -22,6 +22,9 @@ router.get("/public/exercise", (req, res) => {
 
 });
 
+router.get("/public/exercise:?", (req, res) => {
+
+});
 
 
 
