@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Workouts = require("../models/workouts");
+const Workout = require("../models/Workout.js");
 
 // - API - Routes
 // - getLastWorkout     - /API                  - GET
@@ -8,14 +8,13 @@ const Workouts = require("../models/workouts");
 // - getWorkoutsInRange - /api/workouts/range   - GET
 
 
-router.get("/api/workout", async ({ body }, res) => {
-  const stats = await stats.get(Workouts)
-    .then(dbTransaction => {
-      res.json(dbTransaction);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
+router.get("/api/workouts", async ({ body }, res) => {
+  try {
+    const workout = await Workout.find(Workouts)
+    res.json(Workouts);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 })
 
 
