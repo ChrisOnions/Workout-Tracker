@@ -1,33 +1,18 @@
-const { index } = require("../models/workouts");
 const router = require("express").Router();
-const stats = require('../public/stats.js');
+const path = require('path');
+
 // http://127.0.0.1:5500/ - Fitness tracker
-// Public/stats.html 
-// Public/index.html  
-// Public/exercise.html - Continue Workout
-// Exercise? 
 
 router.get("/", async (req, res) => {
-  res.render()
+  res.sendFile(path.join(__dirname, '../public/index.html'))
 });
 
 router.get("/stats", async (req, res) => {
-  console.log("hit - stats");
-  res.redirect(stats)
+  res.sendFile(path.join(__dirname, '../public/stats.html'))
 });
 
-router.get("/public/index", async (req, res) => {
-  console.log("hit - public, index");
+router.get("/exercise", async (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/exercise.html'))
 });
-
-router.get("/public/exercise", async (req, res) => {
-
-});
-
-router.get("/public/exercise:?", async (req, res) => {
-
-});
-
-
 
 module.exports = router;

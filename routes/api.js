@@ -10,8 +10,14 @@ const Workout = require("../models/Workout.js");
 
 router.get("/api/workouts", async ({ body }, res) => {
   try {
-    const workout = await Workout.find(Workouts)
-    res.json(Workouts);
+    const workout = await Workout.aggregate([
+      {
+        $addFields: {
+          totalDuration: { $sum: "$exercises.duration" },
+        }
+      },
+    ])
+    res.json(workout);
   } catch (err) {
     res.status(400).json(err);
   }
