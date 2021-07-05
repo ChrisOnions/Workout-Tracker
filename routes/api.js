@@ -8,7 +8,7 @@ const Workout = require("../models/Workout.js");
 // - getWorkoutsInRange - /api/workouts/range   - GET
 
 // Get all workouts and add the total duration
-router.get("/api/workouts", async ({ body }, res) => {
+router.get("/api/workouts/range", async ({ body }, res) => {
   try {
     const workout = await Workout.aggregate([
       {
@@ -51,12 +51,11 @@ router.put("/api/workouts/:id", async (req, res) => {
 });
 
 // Get All workouts in range
-router.get('/api/workouts/range', async ({ body }, res) => {
+router.get('/api/workouts/', async ({ body }, res) => {
   try {
 
     const workout = await Workout.find({})
     if (workout) {
-      console.log(body);
       res.status(200).json(workout)
     }
   } catch (err) {
